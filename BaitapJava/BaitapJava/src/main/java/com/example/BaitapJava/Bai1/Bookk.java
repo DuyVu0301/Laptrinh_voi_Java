@@ -1,0 +1,62 @@
+package com.example.BaitapJava.Bai1;
+
+import java.util.Scanner;
+
+public class Bookk {
+    private int id;
+    private String title;
+    private String author;
+    private long price;
+    public Bookk() {
+    }
+    public Bookk(int id, String title, String author, long price) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public long getPrice() {
+        return price;
+    }
+    public void setPrice(long price) {
+        this.price = price;
+    }
+    public void input() {
+        try (Scanner x = new Scanner(System.in)) {
+            System.out.print("Nhap ma sach: ");
+            this.id = Integer.parseInt(x.nextLine());
+            System.out.print("Nhap ten sach: ");
+            this.title = x.nextLine();
+            System.out.print("Nhap tac gia: ");
+            this.author = x.nextLine();
+            System.out.print("Nhap don gia: ");
+            this.price = x.nextLong();
+        } catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    public void output() {
+        String msg = """
+                BOOK: id=%d, title=%s, author=%s, price=%d""".formatted(id, title, author, price);
+        System.out.println(msg);
+    }
+}
