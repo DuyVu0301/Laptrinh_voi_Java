@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Main<BaitapJava>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.BaitapJava.Bai1.Main",
+            "projectName": "BaitapJava",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BaitapJavaApplication<BaitapJava>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.BaitapJavaApplication",
+            "projectName": "BaitapJava",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

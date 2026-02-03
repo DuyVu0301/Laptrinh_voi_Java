@@ -2,39 +2,51 @@ package com.example.BaitapJava.Bai2.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import com.example.BaitapJava.Bai2.model.Book;
 
 @Service
 public class BookService {
     private List<Book> books = new ArrayList<>();
+    private Long nextId = 1L;
+
     public BookService() {
-        books.add(new Book(1, "Lập trình Java Cơ Bản", "Nguyễn Văn A"));
-        books.add(new Book(2, "Spring Boot cho người mới", "Trần Thị B"));
-        books.add(new Book(3, "Cấu trúc dữ liệu và Giải thuật", "Phạm Văn C"));
-        books.add(new Book(4, "Thiết kế hệ thống Microservices", "Lê Văn D"));
+        // Sử dụng nextId++ để tự động tăng ID, đồng bộ kiểu Long (L)
+        addBook(new Book(null, "Lập trình Java Cơ Bản", "Nguyễn Văn A"));
+        addBook(new Book(null, "Spring Boot cho người mới", "Trần Thị B"));
+        addBook(new Book(null, "Cấu trúc dữ liệu và Giải thuật", "Phạm Văn C"));
+        addBook(new Book(null, "Thiết kế hệ thống Microservices", "Lê Văn D"));
     }
-    public  List<Book> getAllBooks(){
+
+    public List<Book> getAllBooks() {
         return books;
     }
-    public Book getBookById(int id){
-        return books.stream().filter(book -> book.getId()==id).findFirst().orElse(null);
+
+    // Giữ duy nhất một hàm getById dùng kiểu Long để đồng bộ với Controller
+    public Optional<Book> getBookById(Long id) {
+        return books.stream()
+                .filter(book -> book.getId().equals(id))
+                .findFirst();
     }
-    public void addBook(Book book){
+
+    public void addBook(Book book) {
+        book.setId(nextId++); // Tự động gán ID mới
         books.add(book);
     }
-    public void updateBook(int id, Book updatedBook){
+
+    public void updateBook(Book updatedBook) {
         books.stream()
-                .filter(book -> book.getId()==id)
+                .filter(book -> book.getId().equals(updatedBook.getId()))
                 .findFirst()
                 .ifPresent(book -> {
                     book.setTitle(updatedBook.getTitle());
                     book.setAuthor(updatedBook.getAuthor());
                 });
-            }
-            public void deleteBook(int id){
-                books.removeIf(book -> book.getId()==id);
-            }
     }
-    
 
+    public void deleteBook(Long id) {
+        books.removeIf(book -> book.getId().equals(id));
+    }
+}
