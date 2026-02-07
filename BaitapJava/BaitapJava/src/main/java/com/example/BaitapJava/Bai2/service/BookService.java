@@ -13,7 +13,6 @@ public class BookService {
     private Long nextId = 1L;
 
     public BookService() {
-        // Sử dụng nextId++ để tự động tăng ID, đồng bộ kiểu Long (L)
         addBook(new Book(null, "Lập trình Java Cơ Bản", "Nguyễn Văn A"));
         addBook(new Book(null, "Spring Boot cho người mới", "Trần Thị B"));
         addBook(new Book(null, "Cấu trúc dữ liệu và Giải thuật", "Phạm Văn C"));
@@ -23,8 +22,6 @@ public class BookService {
     public List<Book> getAllBooks() {
         return books;
     }
-
-    // Giữ duy nhất một hàm getById dùng kiểu Long để đồng bộ với Controller
     public Optional<Book> getBookById(Long id) {
         return books.stream()
                 .filter(book -> book.getId().equals(id))
@@ -32,7 +29,7 @@ public class BookService {
     }
 
     public void addBook(Book book) {
-        book.setId(nextId++); // Tự động gán ID mới
+        book.setId(nextId++); 
         books.add(book);
     }
 

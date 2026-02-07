@@ -50,7 +50,6 @@ public class Bookk {
             System.out.print("Nhap don gia: ");
             this.price = x.nextLong();
         } catch (NumberFormatException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

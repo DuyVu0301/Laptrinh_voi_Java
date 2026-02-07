@@ -1,9 +1,8 @@
 package com.example.BaitapJava.Bai2.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*; // Import ngắn gọn hơn
+import org.springframework.web.bind.annotation.*;
 
 import com.example.BaitapJava.Bai2.service.BookService;
 
@@ -11,9 +10,8 @@ import org.springframework.ui.Model;
 
 import com.example.BaitapJava.Bai2.model.Book;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
