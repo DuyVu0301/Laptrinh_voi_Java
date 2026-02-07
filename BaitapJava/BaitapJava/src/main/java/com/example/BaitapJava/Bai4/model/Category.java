@@ -13,6 +13,6 @@ import lombok.Setter;
 public class Category {
     private int id;
 
-    @NotBlank(message = "Tên danh mục không được để trống.") // Bỏ dấu ; ở đây
+    @NotBlank(message = "Tên danh mục không được để trống.") 
     private String name;
 }

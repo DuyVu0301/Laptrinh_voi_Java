@@ -50,17 +50,13 @@ public class ProductService {
     public void updateImage(Product newProduct, MultipartFile imageProduct) {
         if (!imageProduct.isEmpty()) {
             try {
-                // Đảm bảo thư mục lưu trữ tồn tại
                 Path dirImages = Paths.get("src/main/resources/static/images");
                 if (!Files.exists(dirImages)) {
                     Files.createDirectories(dirImages);
                 }
-                
-                // Tạo tên file duy nhất để tránh trùng lặp
                 String newFileName = UUID.randomUUID() + "_" + imageProduct.getOriginalFilename();
                 Path pathFileUpload = dirImages.resolve(newFileName);
                 
-                // Lưu file vào thư mục static
                 Files.copy(imageProduct.getInputStream(), pathFileUpload, StandardCopyOption.REPLACE_EXISTING);
                 newProduct.setImage(newFileName);
             } catch (IOException e) {

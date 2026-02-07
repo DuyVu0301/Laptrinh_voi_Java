@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service // BẮT BUỘC phải có dòng này để @Autowired ở Controller hoạt động
+@Service 
 public class CategoryService {
     private List<Category> listCategory = new ArrayList<>();
 
@@ -15,7 +15,7 @@ public class CategoryService {
         listCategory.add(new Category(2, "Máy tính"));
     }
 
-    public List<Category> getAll() { // Tên hàm phải viết đúng getAll
+    public List<Category> getAll() { 
         return listCategory;
     }
 
