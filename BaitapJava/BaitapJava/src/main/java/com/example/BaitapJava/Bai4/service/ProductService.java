@@ -1,54 +1,50 @@
 package com.example.BaitapJava.Bai4.service;
 
 import com.example.BaitapJava.Bai4.model.Product;
+import com.example.BaitapJava.Bai4.repository.ProductRepository; 
+import com.example.BaitapJava.Bai4.repository.CategoryRepository; 
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class ProductService {
-    private List<Product> listProduct = new ArrayList<>();
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     public List<Product> getAll() {
-        return listProduct;
+        return productRepository.findAll();
     }
 
-    public Product get(int id) {
-        return listProduct.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
+    public void add(Product product) {
+        productRepository.save(product);
     }
 
-    public void add(Product newProduct) {
-        int maxId = listProduct.stream()
-                .mapToInt(Product::getId)
-                .max()
-                .orElse(0);
-        newProduct.setId(maxId + 1);
-        listProduct.add(newProduct);
+    public Product get(Integer id) { 
+        return productRepository.findById(id).orElse(null);
+    }
+    
+    public void delete(Integer id) { 
+        productRepository.deleteById(id);
     }
 
-    public void update(Product editProduct) {
-        Product find = get(editProduct.getId());
-        if (find != null) {
-            find.setPrice(editProduct.getPrice());
-            find.setName(editProduct.getName());
-            if (editProduct.getImage() != null) {
-                find.setImage(editProduct.getImage());
-            }
-        }
+    public void update(Product product) {
+        productRepository.save(product);
     }
-
     public void updateImage(Product newProduct, MultipartFile imageProduct) {
-        if (!imageProduct.isEmpty()) {
+        if (imageProduct != null && !imageProduct.isEmpty()) {
             try {
                 Path dirImages = Paths.get("src/main/resources/static/images");
                 if (!Files.exists(dirImages)) {

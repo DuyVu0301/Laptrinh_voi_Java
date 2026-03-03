@@ -1,28 +1,27 @@
 package com.example.BaitapJava.Bai4.service;
 
 import com.example.BaitapJava.Bai4.model.Category;
+import com.example.BaitapJava.Bai4.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
-@Service 
+@Service
 public class CategoryService {
-    private List<Category> listCategory = new ArrayList<>();
-
-    public CategoryService() {
-        // Thêm dữ liệu mẫu để chạy thử
-        listCategory.add(new Category(1, "Điện thoại"));
-        listCategory.add(new Category(2, "Máy tính"));
+    @Autowired
+    private CategoryRepository categoryRepository;
+    public List<Category> getAll() {
+        return categoryRepository.findAll();
     }
 
-    public List<Category> getAll() { 
-        return listCategory;
+    public void save(Category category) {
+        categoryRepository.save(category);
     }
 
-    public Category get(int id) {
-        return listCategory.stream()
-                .filter(c -> c.getId() == id)
-                .findFirst()
-                .orElse(null);
+    public Category get(Integer id) {
+        return categoryRepository.findById(id).orElse(null);
+    }
+    public void delete(Integer id) {
+        categoryRepository.deleteById(id);
     }
 }
