@@ -1,11 +1,12 @@
-package com.example.BaitapJava.Bai4.service;
+package com.example.BaitapJava.Bai6.service;
 
-import com.example.BaitapJava.Bai4.model.Product;
-import com.example.BaitapJava.Bai4.repository.ProductRepository; 
-import com.example.BaitapJava.Bai4.repository.CategoryRepository; 
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.BaitapJava.Bai6.model.Product;
+import com.example.BaitapJava.Bai6.repository.CategoryRepository;
+import com.example.BaitapJava.Bai6.repository.ProductRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;

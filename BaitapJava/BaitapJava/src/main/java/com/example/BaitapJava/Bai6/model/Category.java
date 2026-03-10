@@ -1,4 +1,4 @@
-package com.example.BaitapJava.Bai4.model;
+package com.example.BaitapJava.Bai6.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

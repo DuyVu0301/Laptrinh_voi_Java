@@ -1,9 +1,11 @@
-package com.example.BaitapJava.Bai4.service;
+package com.example.BaitapJava.Bai6.service;
 
-import com.example.BaitapJava.Bai4.model.Category;
-import com.example.BaitapJava.Bai4.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.BaitapJava.Bai6.model.Category;
+import com.example.BaitapJava.Bai6.repository.CategoryRepository;
+
 import java.util.List;
 
 @Service

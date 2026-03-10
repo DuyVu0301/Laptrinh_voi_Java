@@ -1,8 +1,5 @@
-package com.example.BaitapJava.Bai4.controller;
+package com.example.BaitapJava.Bai6.controller;
 
-import com.example.BaitapJava.Bai4.model.Product;
-import com.example.BaitapJava.Bai4.service.CategoryService;
-import com.example.BaitapJava.Bai4.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.BaitapJava.Bai6.model.Product;
+import com.example.BaitapJava.Bai6.service.CategoryService;
+import com.example.BaitapJava.Bai6.service.ProductService;
 
 
 @Controller
