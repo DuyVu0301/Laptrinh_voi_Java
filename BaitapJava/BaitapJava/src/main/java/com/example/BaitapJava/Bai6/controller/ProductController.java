@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.example.BaitapJava.Bai6.model.Product;
 import com.example.BaitapJava.Bai6.service.CategoryService;
 import com.example.BaitapJava.Bai6.service.ProductService;

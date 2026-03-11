@@ -41,7 +41,7 @@ public class Bookk {
     }
     public void input() {
         try (Scanner x = new Scanner(System.in)) {
-            System.out.print("Nhap max sachsach: ");
+            System.out.print("Nhap max sach: ");
             this.id = Integer.parseInt(x.nextLine());
             System.out.print("Nhap ten sach: ");
             this.title = x.nextLine();
