@@ -9,7 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         
         String menu = """
-            1. Them 1 cuon sach
+            1. Them 1 cuon sach:
             2. Xoa 1 cuon sach theo ID
             3. Cap nhat sach
             4. Xuat danh sach thong tin
