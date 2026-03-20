@@ -16,12 +16,9 @@ public class EnrollController {
     
     @Autowired
     private CourseService courseService;
-
-    // Chỉ STUDENT mới có quyền thực hiện hành động này
     @GetMapping("/{id}")
     public String enrollCourse(@PathVariable("id") int courseId, Principal principal) {
         String username = principal.getName();
-        // Logic lưu thông tin sinh viên đăng ký học phần vào Database
         System.out.println("Sinh viên " + username + " đã đăng ký môn ID: " + courseId);
         
         return "redirect:/home?enrolled=true";

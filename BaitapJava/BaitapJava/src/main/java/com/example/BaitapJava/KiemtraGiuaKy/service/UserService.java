@@ -19,6 +19,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         
         // Luôn đảm bảo có Role
+        
         if (user.getRole() == null || user.getRole().isEmpty()) {
             user.setRole("STUDENT");
         }

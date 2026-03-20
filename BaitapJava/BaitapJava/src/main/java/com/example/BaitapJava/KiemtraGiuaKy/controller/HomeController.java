@@ -18,7 +18,7 @@ public class HomeController {
 
     @GetMapping("/home")
     public String viewHomePage(Model model, @RequestParam(value = "pageNo", defaultValue = "1") int pageNo) {
-        int pageSize = 5; // Yêu cầu đề bài: 5 học phần mỗi trang
+        int pageSize = 5; 
 
         Page<Course> page = courseService.findPaginated(pageNo, pageSize);
         List<Course> listCourses = page.getContent();

@@ -21,4 +21,5 @@ public class User {
 
     @Column(nullable = false)
     private String role = "STUDENT"; // Quyền mặc định là STUDENT
+    
 }
