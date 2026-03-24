@@ -1,4 +1,4 @@
-package com.example.BaitapJava.KiemtraGiuaKy.model;
+package com.example.BaitapJava.BaiCuoi.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,7 +8,8 @@ import lombok.Data;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; 
+    private int id;
 
+    @Column
     private String name;
 }
