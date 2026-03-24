@@ -1,9 +1,9 @@
-package com.example.BaitapJava.BaiCuoi.repository;
+package com.example.BaitapJava.Bai8.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.example.BaitapJava.BaiCuoi.model.Account;
+import com.example.BaitapJava.Bai8.model.Account;
 
 import java.util.Optional;
 

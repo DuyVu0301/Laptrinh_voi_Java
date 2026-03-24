@@ -1,19 +1,18 @@
-package com.example.BaitapJava.BaiCuoi.model;
+package com.example.BaitapJava.Bai8.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import jakarta.persistence.*; // Sửa lỗi Cannot resolve symbol
+import jakarta.validation.constraints.*;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank(message = "Tên sản phẩm không được để trống")
     @Column(nullable = false, length = 255)
@@ -25,8 +24,8 @@ public class Product {
     @Column(nullable = false) // Cột không được null
     private long price;
 
-    @Length(min = 0, max = 500, message = "Tên hình ảnh không quá 200 kí tự")
-    @Column(length = 500) // Độ dài tối đa 200 ký tự
+    @Length(min = 0, max = 200, message = "Tên hình ảnh không quá 200 kí tự")
+    @Column(length = 200) // Độ dài tối đa 200 ký tự
     private String image;
 
     @ManyToOne // Quan hệ nhiều sản phẩm thuộc 1 danh mục

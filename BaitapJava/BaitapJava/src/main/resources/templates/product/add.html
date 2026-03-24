@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html
-  lang="en"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{_layout}"
+  layout:decorate="~{product/_layout}"
 >
   <head>
     <meta charset="UTF-8" />
@@ -12,6 +11,7 @@
   <body>
     <div layout:fragment="content" class="container body-content">
       <h2>Add Product</h2>
+
       <form
         th:action="@{/products/save}"
         th:object="${product}"
@@ -28,6 +28,7 @@
             placeholder="Product Name"
           />
         </div>
+
         <div class="form-group">
           <label for="image">Image URL:</label>
           <input
@@ -38,6 +39,7 @@
             placeholder="http://image.jpg"
           />
         </div>
+
         <div class="form-group">
           <label for="price">Price:</label>
           <input
@@ -48,6 +50,7 @@
             placeholder="Price"
           />
         </div>
+
         <div class="form-group">
           <label for="category">Category:</label>
           <select th:field="*{category}" class="form-control" id="category">
@@ -58,6 +61,7 @@
             ></option>
           </select>
         </div>
+
         <button type="submit" class="btn btn-success">Add Product</button>
       </form>
     </div>

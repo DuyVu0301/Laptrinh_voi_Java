@@ -1,10 +1,11 @@
-package com.example.BaitapJava.BaiCuoi.service;
+package com.example.BaitapJava.Bai8.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
-import com.example.BaitapJava.BaiCuoi.model.Category;
-import com.example.BaitapJava.BaiCuoi.repository.CategoryRepository;
+import com.example.BaitapJava.Bai8.model.Category;
+import com.example.BaitapJava.Bai8.repository.CategoryRepository;
 
 import java.util.List;
 
@@ -12,15 +13,19 @@ import java.util.List;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
+
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
+
     public void saveCategory(Category category) {
         categoryRepository.save(category);
     }
+
     public Category getCategoryById(Integer id) {
         return categoryRepository.findById(id).orElse(null);
     }
+
     public void deleteCategory(Integer id) {
         categoryRepository.deleteById(id);
     }

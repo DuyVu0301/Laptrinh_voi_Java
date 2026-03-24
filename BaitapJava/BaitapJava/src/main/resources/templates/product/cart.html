@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{product/_layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giỏ hàng</title>
+    <style>
+      .qty-input {
+        width: 40px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .btn-qty {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        line-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div layout:fragment="content" class="container mt-4">
+      <h2 class="mb-4">🛒 Giỏ hàng của bạn</h2>
+
+      <div th:if="${#lists.isEmpty(items)}" class="alert alert-info">
+        Giỏ hàng đang trống.
+        <a th:href="@{/products}">Quay lại mua sắm ngay!</a>
+      </div>
+
+      <div th:if="${!#lists.isEmpty(items)}">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-light text-center">
+            <tr>
+              <th>Tên sản phẩm</th>
+              <th>Giá</th>
+              <th style="width: 150px">Số lượng</th>
+              <th>Tổng cộng</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="item : ${items}">
+              <td th:text="${item.name}"></td>
+              <td
+                th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')} + ' đ'"
+              ></td>
+
+              <td>
+                <div
+                  class="d-flex justify-content-center align-items-center gap-1"
+                >
+                  <a
+                    th:href="@{/cart/update/minus/{id}(id=${item.id})}"
+                    class="btn btn-sm btn-outline-secondary btn-qty"
+                    >-</a
+                  >
+
+                  <span class="qty-input" th:text="${item.quantity}"></span>
+
+                  <a
+                    th:href="@{/cart/update/plus/{id}(id=${item.id})}"
+                    class="btn btn-sm btn-outline-secondary btn-qty"
+                    >+</a
+                  >
+                </div>
+              </td>
+
+              <td
+                class="text-end"
+                th:text="${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT')} + ' đ'"
+              ></td>
+              <td class="text-center">
+                <a
+                  th:href="@{/cart/remove/{id}(id=${item.id})}"
+                  class="btn btn-sm btn-outline-danger"
+                  onclick="return confirm('Xóa sản phẩm này khỏi giỏ hàng?')"
+                  >Xóa</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row mt-4 align-items-center">
+          <div class="col-md-6">
+            <a th:href="@{/products}" class="btn btn-secondary"
+              >← Tiếp tục mua sắm</a
+            >
+          </div>
+          <div class="col-md-6 text-end">
+            <div class="mb-3">
+              <h3 class="d-inline">Tổng tiền:</h3>
+              <h2
+                class="d-inline text-danger fw-bold"
+                th:text="${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"
+              ></h2>
+            </div>
+
+            <a
+              th:href="@{/cart/checkout}"
+              class="btn btn-lg btn-success px-4"
+              onclick="return confirm('Bạn có chắc chắn muốn đặt hàng không?')"
+            >
+              Xác nhận đặt hàng (Checkout)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
